@@ -1,0 +1,39 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Docentes</h1>
+    @{
+        if(ViewBag.PromedioDocentes > -1) { 
+            <p class="lead">El promedio de antiguedad de los docentes es @ViewBag.PromedioDocentes años</p>
+        }
+        else{
+            <p class="lead">No hay Docentes en la base</p>
+        }
+    }
+    <a class="btn btn-primary" href='@Url.Action("CrearDocente","Home")'>Agregar Nueva/o Docente</a>
+  </div>
+</div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Antiguedad</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Docente item in ViewBag.ListaDocentes)
+    {
+        <tr>
+            <th scope="row">@item.IdDocente</th>
+            <td>@item.NombreDocente</td>
+            <td>@item.AntiguedadDocente</td>
+            <td>
+                <a class="btn btn-info" href='@Url.Action("VerDetalleDocente","Home", new {IdDocente = item.IdDocente})'>Ver Detalle</a>
+                <a class="btn btn-danger" href='@Url.Action("EliminarDocente","Home",new {IdDocente = item.IdDocente})'>Eliminar</a>
+            </td>
+        </tr>
+    }
+  </tbody>
+</table>

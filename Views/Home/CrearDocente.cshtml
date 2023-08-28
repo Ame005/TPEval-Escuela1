@@ -1,0 +1,43 @@
+<div class="mx-auto text-center col-6">
+    <div class="my-5">
+        <h3>Crear un Docente</h3>
+    </div>
+    <form action='@Url.Action("GuardarDocente")' method="post">
+        <div class="mb-5">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" type="text" name="NombreDocente">
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Foto</label>
+            <input class="form-control" type="text" name="FotoDocente" required>
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Materia</label>
+            <select class="form-control form-select form-select-lg" name="IdMateria" required>
+                <option disabled value="-1">Seleccioná una Opción de la Lista</option>
+                @foreach (Materia m in ViewBag.ListaMaterias)
+                {
+                    <option value="@m.IdMateria">@m.NombreMateria</option>
+                }
+            </select>
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Antiguedad Docente</label>
+            <input class="form-control" type="number" name="AntiguedadDocente" required>
+        </div>
+        <div class="my-5">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href='@Url.Action("Docentes", "Home")' class="btn btn-primary">Volver sin Guardar</a>
+
+        </div>
+    </form>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger fade show text-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <strong>@ViewBag.Error</strong>
+        </div>
+    }
+</div>

@@ -1,0 +1,10 @@
+<div class="customCard shadow-lg rounded">
+  <img class="mb-3 rounded" src="@ViewBag.Docente.FotoDocente" width="100%">
+  <h4 class="mb-3">@ViewBag.Docente.NombreDocente</h4>
+  <p><span class="font-weight-bold">Antiguedad Docente : </span>@ViewBag.Docente.AntiguedadDocente
+    año@(ViewBag.Docente.AntiguedadDocente > 1 ? "s": "") </p>
+  <p><span class="font-weight-bold">Materia : </span>@ViewBag.Docente.NombreMateria</p>
+  <a href='@Url.Action("Docentes", "Home")' class="btn btn-primary">Volver</a>
+</div>
+
+<script type="text/javascript" src="/js/confetti-effect.js"></script>
